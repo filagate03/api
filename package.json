@@ -1,0 +1,8 @@
+{
+  "name": "ai-server",
+  "version": "1.0.0",
+  "description": "Serverless food analysis endpoint",
+  "scripts": {
+    "test": "node --test ai-server/api.test.js"
+  }
+}
