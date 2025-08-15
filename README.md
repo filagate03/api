@@ -1,36 +1,41 @@
-# Food AI Server
+# Viral OS
 
-Серверless-функция для анализа еды по фото, подсчёта калорий и рекомендаций.
+Viral OS — панель для поиска и анализа вирусных коротких видео. Проект использует Next.js, Supabase и модульный биллинг.
 
-## Запуск локально
-
-1. Установи Node.js версии 18 или новее.
-2. Склонируй репозиторий и перейди в папку `api`.
-3. Сохрани ключ OpenAI в переменную окружения:
+## Запуск на Windows
+1. Установите [Node.js 18+](https://nodejs.org/) и [Git](https://git-scm.com/).
+2. Клонируйте репозиторий и перейдите в папку `api`.
+3. Скопируйте `.env.example` в `.env.local` и заполните ключи.
+4. Установите зависимости:
    ```bash
-   export OPENAI_API_KEY="твой_ключ"
+   npm install
    ```
-4. Запусти тесты:
+5. Запустите dev сервер:
    ```bash
-   npm test
+   npm run dev
    ```
-5. Для локального запуска установи [Vercel CLI](https://vercel.com/docs/cli):
-   ```bash
-   npm install -g vercel
-   vercel dev
-   ```
-   Эндпоинт будет доступен по адресу `http://localhost:3000/food`.
+   Приложение будет доступно на `http://localhost:3000`.
 
-## Деплой
+## Деплой на Vercel
+1. Установите [Vercel CLI](https://vercel.com/docs/cli).
+2. Выполните `vercel` и следуйте инструкциям.
+3. Переменные из `.env.local` добавьте в настройки проекта на Vercel.
 
-1. Авторизуйся в Vercel:
-   ```bash
-   vercel login
-   ```
-2. Выполни команду:
-   ```bash
-   vercel
-   ```
-3. Следуй подсказкам в терминале. После деплоя получишь URL вида `https://твое-приложение.vercel.app/food`.
+## Supabase
+1. Создайте проект Supabase и таблицы согласно файлу `supabase.sql` (миграция).
+2. Включите RLS и добавьте политики.
 
-При каждом запросе отправляй POST JSON с полями `imageBase64`, `currentWeight` и `targetWeight`.
+## Биллинг
+Выберите провайдера через переменную `BILLING_PROVIDER` (`lemon`, `stripe`, `yookassa`).
+Заполните соответствующие ключи в `.env.local`.
+
+## Turnstile
+Для защиты от ботов используйте [Cloudflare Turnstile](https://developers.cloudflare.com/turnstile/). Заполните `NEXT_PUBLIC_TURNSTILE_SITE_KEY` и `TURNSTILE_SECRET_KEY`.
+
+## Полезные команды
+- `npm run dev` — запуск в режиме разработки
+- `npm run build` — сборка
+- `npm start` — запуск продакшн-сборки
+- `npm run lint` — проверка eslint
+
+Без заполненных ключей API серверные роуты вернут понятные ошибки, а UI загрузится.
