@@ -1,0 +1,24 @@
+/* Global styles and design tokens for Viral OS */
+:root {
+  --bg: #111;
+  --panel: #1b1b1b;
+  --text: #f9f9f9;
+  --muted: #888;
+  --accent: #3b82f6;
+  --ok: #22c55e;
+  --warn: #facc15;
+  --danger: #ef4444;
+}
+
+html.light {
+  --bg: #f9f9f9;
+  --panel: #fff;
+  --text: #111;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  font-family: sans-serif;
+}
